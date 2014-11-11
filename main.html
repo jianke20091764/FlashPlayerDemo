@@ -1,0 +1,143 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head>
+        <meta charset="UTF-8" />
+        <title>f4Player v1.3.5</title>
+        <meta name="description" content="Free, Small, Quick, Customizable and the Bestest FLV Player on Internet!" />
+        <meta name="keywords" content="f4player, flash, video, player, flv player, f4v player, mp4 player" />
+        <style>
+            body { margin: 0; padding: 0; color:#333; font: normal 13px/1.264 sans-serif; }
+            img { border:0 }
+            .clearfix { clear:both; }
+            #devcontainer { margin: 20px auto; padding: 0 10px; width: 940px; position:relative; z-index:1; }
+            pre, code { 
+                display: block;
+                padding: 10px;
+                color: #eee;
+                border: 1px solid #222;
+                background: #333;
+                font-family: monospace, monospace; 
+                _font-family: 'courier new', monospace; 
+                font-size: 1em;
+            }
+            #area { float:left; width: 480px; }
+            .desc { float:right; width: 440px; }
+            .signature a { color:#555; text-decoration:none; }
+            .signature img { margin-right:5px; vertical-align: middle; }
+			.pop{ position:absolute; top:0; left:0; width:100%; height:100%; background:#ddd; z-index:100;}
+			.pop p{ padding:100px 0; text-align:center;}
+        </style>
+        <!-- jquery -->
+    </head>
+    <body onload="pageInit()">
+        <div id="devcontainer">
+            <!-- development area -->
+
+            <!-- SAMPLE -->
+            <section>
+                <div id="areas">
+                    <h3>f4Player</h3>
+                    <div id="player" style="display:none;">                      
+                        <embed type="application/x-shockwave-flash" src="player.swf" width="480" id="video" name="f" height="270" flashvars="skin=mySkin.swf&thumbnail=bg.jpg&video=test1.mp4" allowScriptAccess="always" allowfullscreen="true" bgcolor="#000000"/>
+					</div>
+					<div id="objectPlayer" style="display:none;">
+						<object id="f4Player" width="480" height="270" type="application/x-shockwave-flash" data="player.swf?v1.3.5"> 
+						  <param name="movie" value="player.swf?v1.3.5" /> 
+						  <param name="quality" value="high" /> 
+						  <param name="menu" value="false" /> 
+						  <param name="scale" value="noscale" /> 
+						  <param name="allowfullscreen" value="true"> 
+						  <param name="allowscriptaccess" value="always"> 
+						  <param name="swlivevonnect" value="true" /> 
+						  <param name="cachebusting" value="false"> 
+						  <param name="flashvars"   value="skin=skin.swf&thumbnail=bg.jpg&video=test1.mp4"/> 
+						</object>
+					</div>
+					<div style="display:none;">
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="();">set development</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="();">set position</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="();">get position</button>
+					</div>
+					<div id="QuanrPlayer"></div>
+					<div>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_setDevelopment();">setDevelopment</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_getDevelopment();">getDevelopment</button>
+					</div>
+					<div>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_setPosition();">setPosition</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_getPosition();">getPosition</button>
+					</div>
+					<div>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_setVideoStatus();">setVideoStatus</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_getVideoStatus();">getVideoStatus</button>
+					</div>
+					<div>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_setVideoAutoPlay();">setVideoAutoPlay</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_getVideoAutoPlay();">getVideoAutoPlay</button>
+					</div>
+					<div>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_getVideoLength();">getVideoLength</button>
+						<button style="width: 150px; height: 40px; background: #ff0; color:#000" onclick="_isVideoEnd();">isVideoEnd</button>
+					</div>
+                </div>
+                <div class="clearfix"></div>
+            </section>
+            <!-- /development area -->
+        </div>
+		
+		<div class="pop" style="display:none;">
+			<p>hehehehefjkasdhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjlfhlaksdhfffffffffffffffffffffffffffffffffffff</p>
+		</div>
+		<script src="http://qunarzz.com/jquery/prd/jquery-1.7.2.min.js"></script>
+		<script src="./QunarPackagePlayer.js" type="text/javascript"></script>
+		<script src="./test.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			/*
+			var vedioDevelopment = true ;
+			var videoDom =  document.getElementById('f4Player');
+			
+			var jsReady = false;
+		    function isReady() {
+		        return jsReady;
+		    }
+		    function pageInit() {
+		        jsReady = true;
+		        console.log('JavaScript is ready');
+		    }
+			
+			function getDevelopment (){
+				return vedioDevelopment  ;
+			}
+			
+			function getReady(){
+				return domReady ;
+			}
+			
+			function _setDevelopment(){
+				if(jsReady){
+					videoDom.setDevelopment(true);
+				}
+			}
+			
+			var pos = 80 ;
+			function _setPosition(){
+				if(jsReady){
+					videoDom.setPosition(pos);
+				}
+			}
+			
+			function _getPosition(){
+				if(jsReady){
+					console.log(videoDom.getPosition() + ' >>> ');
+				}
+			}
+			
+			*/
+			
+		
+			
+			
+		</script>
+    </body>
+</html> 
+
